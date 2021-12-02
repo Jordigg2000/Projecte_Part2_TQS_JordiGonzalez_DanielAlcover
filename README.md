@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Cucumber-Java Skeleton
 
 This is the simplest possible build script setup for Cucumber using Java.
@@ -60,3 +61,7 @@ annotation.
 You can also specify what to run by *tag*:
 
     @IncludeTags("zucchini")
+=======
+# Projecte_Part2_TQS_JordiGonzalez_DanielAlcover
+Pràctica per l'assignatura Test i Qualitat del Software: UI Testing
+>>>>>>> Initial commit
