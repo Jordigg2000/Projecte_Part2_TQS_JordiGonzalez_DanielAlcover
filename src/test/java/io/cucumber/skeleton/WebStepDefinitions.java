@@ -62,8 +62,5 @@ public class WebStepDefinitions {
         driver.quit();
     }
 
-    @Given("we enter to the web")
-    public void weEnterToTheWeb() {
-        driver.get("https://www.tesla.com");
-    }
+
 }
