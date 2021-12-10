@@ -1,8 +1,6 @@
-Feature: Login as a user
+Feature: LOGIN
 
-Background:
-  Given we enter to the web
-
-Scenario: do login in the web
-  When we make login with right user and password
-  Then the login is successful
+Scenario: insert wrong user
+  Given being in the login page
+  When login with wrong user and right password
+  Then the login is not successful
