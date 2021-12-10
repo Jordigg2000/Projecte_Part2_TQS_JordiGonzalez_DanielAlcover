@@ -18,17 +18,6 @@ public class Login {
   private static WebDriver driver;
   private Scenario scenario;
 
-  @BeforeAll
-  public static void setUp() {
-    // This property is optional.
-    // If not specified, WebDriver searches the path for chromedriver in your environment variables
-    // Example path for Linux or Mac:
-    //ChromeOptions options = new ChromeOptions();
-    //options.addArguments("start-maximized");
-    //System.setProperty("webdriver.chrome.driver", "\\Users\\dania\\Documents\\uni 3\\TQS\\Practica2\\chromedriver.exe");
-    //driver = new ChromeDriver(options);
-  }
-
   @Given("access to the main page")
   public void accessToTheMainPage() {
     ChromeOptions options = new ChromeOptions();
@@ -48,22 +37,21 @@ public class Login {
   }
 
 
-  //wrong user
   @Given("being in the login page")
   public void beingInTheLoginPage() {
-
     driver.findElement(By.xpath("//*[@id=\"onetrust-accept-btn-handler\"]")).click();
     driver.findElement(By.xpath("//*[@class=\"zu-derecha\"]")).click();
     driver.findElement(By.xpath("//*[@id=\"zu_header_boton_login\"]")).click();
     driver.findElement(By.xpath("//*[@id=\"onetrust-accept-btn-handler\"]")).click();
   }
 
+  //wrong user
   @When("login with wrong user and right password")
   public void loginWithWrongUserAndRightPassword() {
     driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys("correuerroni@gmail.com");
     driver.findElement(By.xpath("//*[@id=\"clave1\"]")).sendKeys("kM~1O2?2");
   }
-
+  //wrong password
   @When("login with right user and wrong password")
   public void loginWithRightUserAndWrongPassword() {
     driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys("danialcover001@gmail.com");
@@ -74,7 +62,6 @@ public class Login {
   @Then("the login is not successful")
   public void theLoginIsNotSuccessful() {
     String actualURL = driver.getCurrentUrl();
-    System.out.println(actualURL);
     assert Objects.equals(actualURL, "https://club.caprabo.com/areacliente/ca/nlrLogin");
   }
 }
