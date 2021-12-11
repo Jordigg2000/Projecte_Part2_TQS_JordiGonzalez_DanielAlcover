@@ -50,18 +50,19 @@ public class Login {
   public void loginWithWrongUserAndRightPassword() {
     driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys("correuerroni@gmail.com");
     driver.findElement(By.xpath("//*[@id=\"clave1\"]")).sendKeys("kM~1O2?2");
+    driver.findElement(By.xpath("//*[@id=\"continue\"]")).click();
   }
   //wrong password
   @When("login with right user and wrong password")
   public void loginWithRightUserAndWrongPassword() {
     driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys("danialcover001@gmail.com");
     driver.findElement(By.xpath("//*[@id=\"clave1\"]")).sendKeys("passowrderronia");
-
+    driver.findElement(By.xpath("//*[@id=\"continue\"]")).click();
   }
 
   @Then("the login is not successful")
   public void theLoginIsNotSuccessful() {
     String actualURL = driver.getCurrentUrl();
-    assert Objects.equals(actualURL, "https://club.caprabo.com/areacliente/ca/nlrLogin");
+    assert Objects.equals(actualURL, "https://club.caprabo.com/areacliente/ca/nlrLogin#");
   }
 }
