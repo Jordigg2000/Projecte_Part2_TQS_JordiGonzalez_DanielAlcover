@@ -5,6 +5,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.*;
@@ -23,7 +24,8 @@ public class redirect {
   public void accessToTheMainPage2() {
     ChromeOptions options = new ChromeOptions();
     options.addArguments("start-maximized");
-    System.setProperty("webdriver.chrome.driver", "\\Users\\dania\\Documents\\uni 3\\TQS\\Practica2\\chromedriver.exe");
+    options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+    System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
     driver = new ChromeDriver(options);
     driver.get("https://www.caprabo.com/ca/home/");
   }
