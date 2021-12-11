@@ -24,6 +24,7 @@ public class Login {
   public void accessToTheMainPage() {
     ChromeOptions options = new ChromeOptions();
     options.addArguments("start-maximized");
+    options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
     System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
     driver = new ChromeDriver(options);
     driver.get("https://www.caprabo.com/ca/home/");
