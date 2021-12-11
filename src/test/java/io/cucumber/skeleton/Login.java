@@ -13,6 +13,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 public class Login {
 
@@ -30,11 +31,17 @@ public class Login {
 
   @When("we make login with right user and password")
   public void weMakeLoginWithRightUserAndPassword() {
+    driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys("danialcover001@gmail.com");
+    driver.findElement(By.xpath("//*[@id=\"clave1\"]")).sendKeys("kM~1O2?2");
+    driver.findElement(By.xpath("//*[@id=\"continue\"]")).click();
 
   }
 
   @Then("the login is successful")
   public void theLoginIsSuccessful() {
+    String actualURL = driver.getCurrentUrl();
+    System.out.println(actualURL);
+    assert Objects.equals(actualURL, "https://club.caprabo.com/areacliente/ca/nlr/nlrVerificarSmsView");
   }
 
 
