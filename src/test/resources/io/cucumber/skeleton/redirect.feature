@@ -11,3 +11,8 @@ Feature: redirect
   Scenario: go to caprabo's facebook page
     When click on facebook button
     Then it is in caprabo's facebook page
+
+  Scenario: go to capraboacasa.com
+    When click on productores
+    When click on dulces y desayunos
+    Then it is in the capraboacasa page

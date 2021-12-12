@@ -41,8 +41,7 @@ public class Offer {
 
     @When("write postal code")
     public void writePostalCode() {
-
-        driver.findElement(By.xpath("//*[@class=\"js-big-search-autocomplete\"]")).sendKeys("08033");
+        driver.findElement(By.xpath("//input[@placeholder=\"Ej.: Ciudad, Código Postal, ...\"]")).sendKeys("08033");
         driver.findElement(By.xpath("//*[@id=\"big-search-button\"]")).click();
     }
 

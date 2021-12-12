@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,5 +62,26 @@ public class redirect {
     String actualURL = driver.getCurrentUrl();
     System.out.println(actualURL);
     assert Objects.equals(actualURL, "https://www.facebook.com/Caprabo");
+  }
+
+  @When("click on productores")
+  public void clickOnProductores() {
+    driver.findElement(By.xpath("//*[@id=\"onetrust-accept-btn-handler\"]")).click();
+    Actions builder = new Actions(driver);
+    driver.findElement(By.xpath("//*[@title=\"La Nostra Terra\"]")).click();
+  }
+
+  @When("click on dulces y desayunos")
+  public void clickOnDulcesYDesayunos() {
+    driver.findElement(By.xpath("//*[@class=\"btnAzul\" and @href=\"https://www.capraboacasa.com/portal/es/super/de-la-nostra-terra/bebidas/8281\"]")).click();
+  }
+
+  @Then("it is in the capraboacasa page")
+  public void itIsInTheCapraboacasaPage() {
+    List<String> browserTabs = new ArrayList<>(driver.getWindowHandles());
+    driver.switchTo().window(browserTabs.get(1));
+    String actualURL = driver.getCurrentUrl();
+    System.out.println(actualURL);
+    assert Objects.equals(actualURL, "https://www.capraboacasa.com/portal/es/super/de-la-nostra-terra/bebidas/"); //genera url distinto cada vez. Nuscar forma de comparar solo la primera parte
   }
 }
