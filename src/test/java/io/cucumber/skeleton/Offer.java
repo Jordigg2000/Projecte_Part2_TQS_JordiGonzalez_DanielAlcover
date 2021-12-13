@@ -8,6 +8,8 @@ import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Objects;
 
@@ -21,7 +23,7 @@ public class Offer {
     public void accessToTheMainPage3() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
-        options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+        //options.setPageLoadStrategy(PageLoadStrategy.EAGER);
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         driver = new ChromeDriver(options);
         driver.get("https://www.caprabo.com/ca/home/");
@@ -30,7 +32,7 @@ public class Offer {
 
     @When("click on ofertes i promocions")
     public void clickOnOfertesIPromocions() {
-        driver.findElement(By.xpath("//*[@id=\"onetrust-accept-btn-handler\"]")).click();
+        driver.findElement(By.xpath("//*[@id='onetrust-accept-btn-handler']")).click(); //cookies
         driver.findElement(By.xpath("//*[@title=\"Ofertes i promocions\"]")).click();
     }
 
@@ -41,7 +43,10 @@ public class Offer {
 
     @When("write postal code")
     public void writePostalCode() {
-        driver.findElement(By.xpath("//input[@placeholder=\"Ej.: Ciudad, Código Postal, ...\"]")).sendKeys("08033");
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        By element1 = By.xpath("//input[@class='js-big-search-autocomplete' and type='text']");
+        wait.until(ExpectedConditions.presenceOfElementLocated(element1));
+        driver.findElement(element1).sendKeys("08033");
         driver.findElement(By.xpath("//*[@id=\"big-search-button\"]")).click();
     }
 

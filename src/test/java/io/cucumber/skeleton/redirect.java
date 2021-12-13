@@ -1,17 +1,14 @@
 package io.cucumber.skeleton;
 
-import io.cucumber.java.*;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,8 +31,13 @@ public class redirect {
   @When("click on caprabo info button")
   public void clickOnCapraboSInfoButton() {
     driver.findElement(By.xpath("//*[@id=\"onetrust-accept-btn-handler\"]")).click();
-    driver.findElement(By.xpath("//*[@href=\"/ca/conoce-caprabo/sala-de-prensa/caprabo-corporativo/\"]")).click();
-    driver.findElement(By.xpath("//*[@data-link=\"#principalesdatos\" and @class=\"btn btn-brand-light btn-lg pl-30 pr-30 lower\"]")).click();
+    WebDriverWait wait = new WebDriverWait(driver, 5);
+    By element1 = By.xpath("//*[@href=\"/ca/conoce-caprabo/sala-de-prensa/caprabo-corporativo/\"]");
+    wait.until(ExpectedConditions.visibilityOfElementLocated(element1));
+    driver.findElement(element1).click();
+    By element2 = By.xpath("//*[@data-link=\"#principalesdatos\" and @class=\"btn btn-brand-light btn-lg pl-30 pr-30 lower\"]");
+    wait.until(ExpectedConditions.visibilityOfElementLocated(element2));
+    driver.findElement(element2).click();
   }
 
   @When("click on main data")
@@ -82,6 +84,6 @@ public class redirect {
     driver.switchTo().window(browserTabs.get(1));
     String actualURL = driver.getCurrentUrl();
     System.out.println(actualURL);
-    assert Objects.equals(actualURL, "https://www.capraboacasa.com/portal/es/super/de-la-nostra-terra/bebidas/"); //genera url distinto cada vez. Nuscar forma de comparar solo la primera parte
+    assert actualURL.contains("https://www.capraboacasa.com/portal/es/super/de-la-nostra-terra/bebidas/");
   }
 }

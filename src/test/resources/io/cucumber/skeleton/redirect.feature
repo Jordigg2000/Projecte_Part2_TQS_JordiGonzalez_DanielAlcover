@@ -12,7 +12,7 @@ Feature: redirect
     When click on facebook button
     Then it is in caprabo's facebook page
 
-  Scenario: go to capraboacasa.com
+  Scenario: go to capraboacasa.com beverages
     When click on productores
     When click on dulces y desayunos
     Then it is in the capraboacasa page
