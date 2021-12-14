@@ -41,6 +41,7 @@ public class Login {
     driver.findElement(element1).click();
   }
 
+
   //wrong user
   @When("login with wrong user and right password")
   public void loginWithWrongUserAndRightPassword() {

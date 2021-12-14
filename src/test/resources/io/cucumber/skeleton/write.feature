@@ -11,3 +11,7 @@ Feature: write
     When clink on supermarket localizer
     When choose city
     Then right supermarket appears
+
+  Scenario: change language
+    When select castellano
+    Then web is in castellano
