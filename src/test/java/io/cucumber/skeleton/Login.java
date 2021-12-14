@@ -78,8 +78,6 @@ public class Login {
     WebDriverWait wait = new WebDriverWait(driver, 5);
     By element = By.xpath("//*[@id=\"continue\"]");
     wait.until(ExpectedConditions.visibilityOfElementLocated(element));
-    List<String> browserTabs = new ArrayList<>(driver.getWindowHandles());
-    driver.switchTo().window(browserTabs.get(0));
     String actualURL = driver.getCurrentUrl();
     System.out.println("actualURL " + actualURL);
     assert Objects.equals(actualURL, "https://club.caprabo.com/areacliente/ca/nlr/nlrVerificarSmsView");
