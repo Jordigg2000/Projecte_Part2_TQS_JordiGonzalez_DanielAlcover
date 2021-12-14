@@ -8,6 +8,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
@@ -27,16 +28,6 @@ public class Write {
         driver.get("https://www.caprabo.com/ca/home/");
     }
 
-
-    @Then("it is in the capraboacasa page")
-    public void itIsInTheCapraboacasaPage() {
-        List<String> browserTabs = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(browserTabs.get(1));
-        String actualURL = driver.getCurrentUrl();
-        System.out.println(actualURL);
-        assert actualURL.contains("https://www.capraboacasa.com/portal/es/super/de-la-nostra-terra/bebidas/");
-    }
-
     @When("click on Caprabo a casa")
     public void clickOnCapraboACasa() {
         driver.findElement(By.xpath("//*[@id=\"onetrust-accept-btn-handler\"]")).click();
@@ -54,5 +45,25 @@ public class Write {
         String actualURL = driver.getCurrentUrl();
         System.out.println(actualURL);
         assert actualURL.contains("https://www.capraboacasa.com/portal/es?utm_source=caprabo&utm_medium=home&utm_campaign=menu_capraboacasa_&_ga");
+    }
+
+    @When("clink on supermarket localizer")
+    public void clinkOnSupermarketLocalizer() {
+        driver.findElement(By.xpath("//*[@id=\"onetrust-accept-btn-handler\"]")).click();
+        driver.findElement(By.xpath("//a[@class='txt-localizador']")).click();
+    }
+
+    @When("choose city")
+    public void chooseCity() {
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        By element1 = By.xpath("//option[@value='Sant Quirze del Vallès']");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(element1));
+        Select menu = new Select(driver.findElement(By.xpath("//select[@id='supermarket']")));
+        menu.selectByVisibleText("Sant Quirze del Vallès");
+    }
+
+    @Then("right supermarket appears")
+    public void rightSupermarketAppears() {
+        assert driver.findElement(By.xpath("//option[@value='Sant Quirze del Vallès']")).isDisplayed();
     }
 }

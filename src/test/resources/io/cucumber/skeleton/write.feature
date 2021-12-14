@@ -6,3 +6,8 @@ Feature: write
     When click on Caprabo a casa
     When write vodka on Cercador
     Then check url
+
+  Scenario: choose supermarket from the list
+    When clink on supermarket localizer
+    When choose city
+    Then right supermarket appears

@@ -73,7 +73,7 @@ public class redirect {
     driver.findElement(By.xpath("//*[@title=\"La Nostra Terra\"]")).click();
   }
 
-  @When("click on dulces y desayunos")
+  @When("click on begudes")
   public void clickOnDulcesYDesayunos() {
     driver.findElement(By.xpath("//*[@class=\"btnAzul\" and @href=\"https://www.capraboacasa.com/portal/es/super/de-la-nostra-terra/bebidas/8281\"]")).click();
   }

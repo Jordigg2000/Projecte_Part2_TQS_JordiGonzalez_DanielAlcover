@@ -14,5 +14,5 @@ Feature: redirect
 
   Scenario: go to capraboacasa.com beverages
     When click on productores
-    When click on dulces y desayunos
+    When click on begudes
     Then it is in the capraboacasa page
