@@ -1,4 +1,4 @@
-Feature: filters in product search
+Feature: filters
 
   Background:
     Given access to the main page5

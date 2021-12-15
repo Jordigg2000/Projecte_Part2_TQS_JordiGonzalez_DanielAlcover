@@ -12,10 +12,6 @@ Feature: write
     When choose city
     Then right supermarket appears
 
-  Scenario: change language
-    When select castellano
-    Then web is in castellano
-
   Scenario: search llet
     When click and select Diccionari
     When write llet and descobrir

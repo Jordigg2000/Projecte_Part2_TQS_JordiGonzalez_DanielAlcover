@@ -76,23 +76,6 @@ public class Write {
         assert driver.findElement(By.xpath("//option[@value='Sant Quirze del Vallès']")).isDisplayed();
     }
 
-    @When("select castellano")
-    public void selectCastellano() {
-        By element1 = By.xpath("//*[@id=\"onetrust-accept-btn-handler\"]");
-
-        WebDriverWait wait = new WebDriverWait(driver, 5);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(element1));
-        driver.findElement(element1).click();
-        driver.findElement(By.xpath("/html/body/div[1]/div/header/div/div[2]/div/nav/div/ul/li[5]/a")).click();
-    }
-
-    @Then("web is in castellano")
-    public void webIsInCastellano() {
-        WebElement aux = driver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div[1]/div/div/div[2]/div[1]/div[1]/h2"));
-        assert aux.getText().contains("Ofertas de Navidad");
-
-    }
-
     @When("click and select Diccionari")
     public void clickAndSelectDiccionari() {
         driver.findElement(By.xpath("//*[@id=\"onetrust-accept-btn-handler\"]")).click();
