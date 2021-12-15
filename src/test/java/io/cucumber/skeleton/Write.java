@@ -72,11 +72,9 @@ public class Write {
         By element1 = By.xpath("//*[@id=\"onetrust-accept-btn-handler\"]");
 
         WebDriverWait wait = new WebDriverWait(driver, 5);
-        //By element = By.xpath("//a[@class='active_lang' and @href='/es/home/']");
         wait.until(ExpectedConditions.visibilityOfElementLocated(element1));
         driver.findElement(element1).click();
         driver.findElement(By.xpath("/html/body/div[1]/div/header/div/div[2]/div/nav/div/ul/li[5]/a")).click();
-        //driver.findElement(By.xpath("//a[@class='active_lang' and @href='/es/home/']")).click();
     }
 
     @Then("web is in castellano")
