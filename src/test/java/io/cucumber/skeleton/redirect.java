@@ -51,20 +51,6 @@ public class redirect {
     assert Objects.equals(actualURL, "https://www.caprabo.com/ca/conoce-caprabo/sala-de-prensa/caprabo-corporativo/#principalesdatos");
   }
 
-  @When("click on facebook button")
-  public void clickOnFacebookButton() {
-    driver.findElement(By.xpath("//*[@id=\"onetrust-accept-btn-handler\"]")).click();
-    driver.findElement(By.xpath("//*[@href=\"https://www.facebook.com/Caprabo\"]")).click();
-  }
-
-  @Then("it is in caprabo's facebook page")
-  public void itIsInCapraboSFacebookPage() {
-    List<String> browserTabs = new ArrayList<>(driver.getWindowHandles());
-    driver.switchTo().window(browserTabs.get(1));
-    String actualURL = driver.getCurrentUrl();
-    System.out.println(actualURL);
-    assert Objects.equals(actualURL, "https://www.facebook.com/Caprabo");
-  }
 
   @When("click on productores")
   public void clickOnProductores() {

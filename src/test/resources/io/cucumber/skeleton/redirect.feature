@@ -8,9 +8,6 @@ Feature: redirect
     When click on main data
     Then it is in the right page
 
-  Scenario: go to caprabo's facebook page
-    When click on facebook button
-    Then it is in caprabo's facebook page
 
   Scenario: go to capraboacasa.com beverages
     When click on productores

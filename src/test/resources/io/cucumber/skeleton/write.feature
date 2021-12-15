@@ -15,3 +15,8 @@ Feature: write
   Scenario: change language
     When select castellano
     Then web is in castellano
+
+  Scenario: search llet
+    When click and select Diccionari
+    When write llet and descobrir
+    Then you got the milk
