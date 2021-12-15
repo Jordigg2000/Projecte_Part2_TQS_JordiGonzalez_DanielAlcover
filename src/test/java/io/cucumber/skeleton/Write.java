@@ -85,28 +85,26 @@ public class Write {
         By element1 = By.xpath("/html/body/div[1]/div/header/nav/div/div[2]/div/div[1]/ul/li[2]/ul/li[3]/a");
         wait.until(ExpectedConditions.visibilityOfElementLocated(element1));
         driver.findElement(element1).click();
-        //By element1 = By.xpath("//*[@class=\"nav-link  nav-link--button\"]");
-        //driver.findElement(element1).click();
-
     }
 
     @When("write llet and descobrir")
     public void writeLletAndDescobrir() {
 
-        driver.findElement(By.xpath("//*[@id=\"campoBuscadorDiccionario\"]")).sendKeys("llet");
-        WebDriverWait wait = new WebDriverWait(driver, 5);
-        By element1 = By.xpath("//*[@id_elemento=\"7f86bae2-a8f2-11eb-b300-0a015e50794c\"]");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(element1));
+        WebElement aux = driver.findElement(By.xpath("//*[@id=\"campoBuscadorDiccionario\"]"));
+        aux.sendKeys("oli");
+        aux.sendKeys(Keys.ENTER);
+        //WebDriverWait wait = new WebDriverWait(driver, 5);
+        //By element1 = By.xpath("//*[@id_elemento=\"7f86bae2-a8f2-11eb-b300-0a015e50794c\"]");
+        //wait.until(ExpectedConditions.visibilityOfElementLocated(element1));
 
-        driver.findElement(By.xpath("//*[@id_elemento=\"7f86bae2-a8f2-11eb-b300-0a015e50794c\"]")).click();
+        //driver.findElement(By.xpath("//*[@id_elemento=\"7f86bae2-a8f2-11eb-b300-0a015e50794c\"]")).click();
 
     }
 
     @Then("you got the milk")
     public void youGotTheMilk() {
-
         WebElement aux = driver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div[2]/div/div/div/div[2]/div/div/div[1]/div/div"));
-        assert aux.getText().contains("Tenir llet");
-
+        System.out.println(aux.getText());
+        assert aux.getText().contains("És pa sucat amb oli");
     }
 }

@@ -88,8 +88,8 @@ public class language {
 
   @Then("xefcaprabo is in castellano")
   public void xefcapraboIsInCastellano() {
-    WebElement aux = driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[6]/div/div[2]/center/h1[1]")); //title to check the language
+    WebElement aux = driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[6]/div/div[1]/center/ol[1]/li[2]/a/h4")); //title to check the language
     System.out.println(aux.getText());
-    assert aux.getText().contains("DESCUBRE UN MUNDO");
+    assert aux.getText().contains("ESCUELA DE COCINA");
   }
 }

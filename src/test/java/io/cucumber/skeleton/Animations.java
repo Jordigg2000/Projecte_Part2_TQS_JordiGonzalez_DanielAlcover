@@ -37,7 +37,7 @@ public class Animations {
 
     @Then("check 5th slide")
     public void checkThSlide() {
-        WebElement aux = driver.findElement(By.xpath("//*[@title=\"veure més\"]"));
+        WebElement aux = driver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div[1]/div/div/div[1]/div[1]/div/div/div/div[5]/div/div/div/div/div/a"));
         assert aux.getText().contains("veure més");
     }
 

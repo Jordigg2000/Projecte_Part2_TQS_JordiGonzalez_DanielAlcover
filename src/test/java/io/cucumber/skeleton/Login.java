@@ -71,14 +71,14 @@ public class Login {
     driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys("danialcover001@gmail.com");
     driver.findElement(By.xpath("//*[@id=\"clave1\"]")).sendKeys("kM~1O2?2");
     driver.findElement(By.xpath("//*[@id=\"continue\"]")).click();
-
   }
 
   @Then("the login is successful")
-  public void theLoginIsSuccessful() {
+  public void theLoginIsSuccessful() throws InterruptedException {
     WebDriverWait wait = new WebDriverWait(driver, 5);
     By element = By.xpath("//*[@id=\"continue\"]");
     wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+    Thread.sleep(5000);
     String actualURL = driver.getCurrentUrl();
     System.out.println("actualURL " + actualURL);
     assert Objects.equals(actualURL, "https://club.caprabo.com/areacliente/ca/nlr/nlrVerificarSmsView");
