@@ -72,4 +72,21 @@ public class redirect {
     System.out.println(actualURL);
     assert actualURL.contains("https://www.capraboacasa.com/portal/es/super/de-la-nostra-terra/bebidas/");
   }
+
+  @When("click on BenvingudaLlevadora")
+  public void clickOnBenvingudaLlevadora() {
+    driver.findElement(By.xpath("//*[@id=\"onetrust-accept-btn-handler\"]")).click();
+    driver.findElement(By.xpath("//*[@href=\"http://www.bienvenidamatrona.es/cat?utm_source=caprabo&utm_medium=home&utm_campaign=menu_bienvenidobebe\"]")).click();
+
+
+  }
+
+  @Then("is is in the bienvenidaMatrona page")
+  public void isIsInTheBienvenidaMatronaPage() {
+    List<String> browserTabs = new ArrayList<>(driver.getWindowHandles());
+    driver.switchTo().window(browserTabs.get(1));
+    String actualURL = driver.getCurrentUrl();
+    System.out.println(actualURL);
+    assert actualURL.contains("https://www.bienvenidamatrona.es/cat?utm_source=caprabo&utm_medium=home&utm_campaign=menu_bienvenidobebe");
+  }
 }

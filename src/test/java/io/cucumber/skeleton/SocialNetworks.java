@@ -16,8 +16,8 @@ import java.util.Objects;
 public class SocialNetworks {
 
     private static WebDriver driver;
-    @Given("access to the main page{int}")
-    public void accessToTheMainPage(int arg0) {
+    @Given("access to the main page7")
+    public void accessToTheMainPage7() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
         options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
@@ -39,5 +39,33 @@ public class SocialNetworks {
         String actualURL = driver.getCurrentUrl();
         System.out.println(actualURL);
         assert Objects.equals(actualURL, "https://www.facebook.com/Caprabo");
+    }
+    @When("click on instagram button")
+    public void clickOnInstagramButton() {
+        driver.findElement(By.xpath("//*[@id=\"onetrust-accept-btn-handler\"]")).click();
+        driver.findElement(By.xpath("//*[@href=\"https://www.instagram.com/caprabo_supermercats/\"]")).click();
+    }
+
+    @Then("it is in caprabo's instagram page")
+    public void itIsInCapraboSInstagramPage() {
+        List<String> browserTabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(browserTabs.get(1));
+        String actualURL = driver.getCurrentUrl();
+        System.out.println(actualURL);
+        assert Objects.equals(actualURL, "https://www.instagram.com/caprabo_supermercats/");
+    }
+    @When("click on twitter button")
+    public void clickOnTwitterButton() {
+        driver.findElement(By.xpath("//*[@id=\"onetrust-accept-btn-handler\"]")).click();
+        driver.findElement(By.xpath("//*[@href=\"https://twitter.com/caprabo\"]")).click();
+    }
+
+    @Then("it is in caprabo's twitter page")
+    public void itIsInCapraboSTwitterPage() {
+        List<String> browserTabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(browserTabs.get(1));
+        String actualURL = driver.getCurrentUrl();
+        System.out.println(actualURL);
+        assert Objects.equals(actualURL, "https://twitter.com/caprabo");
     }
 }
